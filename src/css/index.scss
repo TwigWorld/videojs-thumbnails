@@ -1,0 +1,65 @@
+// Sass for videojs-thumbnails
+
+.video-js .vjs-progress-control .vjs-mouse-display {
+  display: none !important;
+}
+
+.vjs-thumbnail-holder {
+  position: absolute;
+  left: -1000px;
+  bottom: 11px;
+  height: 86px;
+}
+
+/* the thumbnail image itself */
+.vjs-thumbnail-img {
+  max-width: none;
+  position: absolute;
+  left: 0;
+  bottom: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* fade in the thumbnail when hovering over the progress bar */
+
+/* .fake-active is needed for Android only. It's removed on touchend/touchecancel */
+.vjs-progress-control:hover .vjs-thumbnail-img,
+.vjs-progress-control.fake-active .vjs-thumbnail-img,
+.vjs-progress-control:active .vjs-thumbnail-img,
+.vjs-progress-control:hover .vjs-thumbnail-time,
+.vjs-progress-control.fake-active .vjs-thumbnail-time,
+.vjs-progress-control:active .vjs-thumbnail-time {
+  opacity: 1;
+}
+
+/* ... but hide the thumbnail when hovering directly over it */
+.vjs-progress-control:hover .vjs-thumbnail-holder:hover,
+.vjs-progress-control:active .vjs-thumbnail-holder:active,
+.vjs-progress-control:hover .vjs-thumbnail-holder:hover .vjs-thumbnail-time,
+.vjs-progress-control:active .vjs-thumbnail-holder:active .vjs-thumbnail-time {
+  opacity: 0;
+}
+
+.vjs-thumbnail-time {
+  bottom: 23px;
+  opacity: 0;
+  color: #333;
+  font-size: 1.1em;
+  width: 40px;
+  margin-left: -20px;
+  position: absolute;
+  z-index: 9999;
+}
+
+.vjs-thumbnail-arrow {
+  bottom: 12px;
+  position: absolute;
+  opacity: 0.7;
+  width: 10px;
+  margin-left: -5px;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+}

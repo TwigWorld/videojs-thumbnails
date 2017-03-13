@@ -1,0 +1,58 @@
+{
+  "name": "videojs-thumbnails",
+  "version": "0.0.0",
+  "description": "Thumbnails images on video progress bar.",
+  "main": "dist/es5/index.js",
+  "jsnext:main": "src/js/index.js",
+  "engines": {
+    "node": ">=4.4.0"
+  },
+  "generator-videojs-plugin": {
+    "version": "3.1.1"
+  },
+  "scripts": {
+    "build": "sb-build",
+    "clean": "sb-clean",
+    "lint": "sb-lint",
+    "start": "sb-start",
+    "test": "sb-test",
+    "watch": "sb-watch",
+    "prepublish": "npm run build",
+    "postversion": "sb-release"
+  },
+  "keywords": [
+    "videojs",
+    "videojs-plugin"
+  ],
+  "author": "Mariusz Rajczakowski <mrajczakowski@gmail.com>",
+  "license": "MIT",
+  "browserify-shim": "node_modules/videojs-spellbook/config/shim.config.js",
+  "spellbook": {
+    "lang": false,
+    "docs": false
+  },
+  "files": [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "dist/browser",
+    "dist/docs",
+    "dist/es5",
+    "dist/lang",
+    "docs/",
+    "index.html",
+    "src/"
+  ],
+  "dependencies": {
+    "video.js": "^5.16.0"
+  },
+  "devDependencies": {
+    "ghooks": "^1.3.2",
+    "videojs-spellbook": "^2.0.2"
+  },
+  "config": {
+    "ghooks": {
+      "pre-push": "npm run test"
+    }
+  }
+}

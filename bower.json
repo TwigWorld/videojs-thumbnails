@@ -1,0 +1,14 @@
+{
+  "name": "videojs-thumbnails",
+  "author": "Mariusz Rajczakowski &lt;mrajczakowski@gmail.com&gt;",
+  "license": "MIT",
+  "main": [
+    "dist/browser/videojs-thumbnails.min.css",
+    "dist/browser/videojs-thumbnails.min.js"
+  ],
+  "keywords": [
+    "videojs",
+    "videojs-plugin"
+  ]
+}
+
