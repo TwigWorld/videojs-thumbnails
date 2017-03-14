@@ -134,7 +134,7 @@ export default class ThumbnailHelpers {
     }
   }
 
-  static getVideoDuration() {
+  static getVideoDuration(player) {
     let duration = player.duration();
 
     player.on('durationchange', () => {
@@ -235,7 +235,7 @@ export default class ThumbnailHelpers {
                       thumbnailImg,
                       player) {
 
-    const duration = ThumbnailHelpers.getVideoDuration();
+    const duration = ThumbnailHelpers.getVideoDuration(player);
     const pageXOffset = ThumbnailHelpers.getScrollOffset().x;
     const progresBarPosition = progressControl.el().
                                getBoundingClientRect();
@@ -277,7 +277,8 @@ export default class ThumbnailHelpers {
                           thumbnailsHolder,
                           thumbnailClips,
                           timelineTime,
-                          thumbnailImg) {
+                          thumbnailImg,
+                          player) {
 
     // update the thumbnail while hovering
     progressControl.on('mousemove', (event) => {
@@ -286,7 +287,8 @@ export default class ThumbnailHelpers {
                                     thumbnailsHolder,
                                     thumbnailClips,
                                     timelineTime,
-                                    thumbnailImg);
+                                    thumbnailImg,
+                                    player);
     });
     progressControl.on('touchmove', (event) => {
       ThumbnailHelpers.moveListener(event,

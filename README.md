@@ -2,10 +2,10 @@
 
 Thumbnails images on video progress bar.
 Example of the thumbnail:
-![Thumbnail example](./thumbnails.jpg?raw=true "Thumbnail example")
+![Thumbnail example](thumbnails.jpg?raw=true "Thumbnail example")
 
 The plugin works with sprites. Example of sprite generated from the video:
-![Thumbnail sprite example](./sprite.jpg?raw=true "Thumbnail sprite example")
+![Thumbnail sprite example](sprite.jpg?raw=true "Thumbnail sprite example")
 
 ## Installation
 
