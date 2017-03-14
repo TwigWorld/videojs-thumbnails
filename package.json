@@ -1,6 +1,6 @@
 {
   "name": "videojs-thumbnails",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Thumbnails images on video progress bar.",
   "main": "dist/es5/index.js",
   "jsnext:main": "src/js/index.js",
