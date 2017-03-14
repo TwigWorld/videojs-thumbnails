@@ -2,10 +2,10 @@
 
 Thumbnails images on video progress bar.
 Example of the thumbnail:
-![Thumbnail example](thumbnails.jpg?raw=true "Thumbnail example")
+![Thumbnail example](https://github.com/TwigWorld/videojs-thumbnails/raw/master/thumbnails.jpg "Thumbnail example")
 
 The plugin works with sprites. Example of sprite generated from the video:
-![Thumbnail sprite example](sprite.jpg?raw=true "Thumbnail sprite example")
+![Thumbnail sprite example](https://github.com/TwigWorld/videojs-thumbnails/raw/master/sprite.jpg "Thumbnail sprite example")
 
 ## Installation
 
