@@ -27,39 +27,10 @@ QUnit.module('videojs-thumbnails', {
     // before any player is created; otherwise, timers could get created
     // with the actual timer methods!
 
-    this.prepareTresholds = (videoTime) => {
-      let currentTime = 0;
-      const stepTime = 2;
-      let currentIteration = 0;
-      const thumbnailWidth = 100;
-      let thumbnailOffset = 0;
-      const spriteURL = 'http://placehold.it/350x150';
-      const tresholds = {
-        0: {
-          src: spriteURL,
-          style: {
-            left: (thumbnailWidth / 2 * -1) + 'px',
-            width: ((Math.floor(videoTime / stepTime) + 1) * thumbnailWidth) + 'px',
-            height: '86px',
-            padding: '5px 0 23px 0',
-            background: 'rgba(255,255,255,0.7)',
-            clip: 'rect(0, 100px, 100px, 0)'
-          }
-        }
-      };
-
-      while (currentTime <= videoTime) {
-        currentTime += stepTime;
-        thumbnailOffset = ++currentIteration * thumbnailWidth;
-        tresholds[currentTime] = {
-          style: {
-            left: ((thumbnailWidth / 2 + thumbnailOffset) * -1) + 'px',
-            clip: 'rect(0, ' + (thumbnailWidth + thumbnailOffset) + 'px, 100px, ' +
-                  thumbnailOffset + 'px)'
-          }
-        };
-      }
-      return tresholds;
+    this.prepareTresholds = {
+      width: 100,
+      spriteUrl: 'http://placehold.it/350x150',
+      stepTime: 2
     };
 
     this.clock = sinon.useFakeTimers();
@@ -86,13 +57,10 @@ QUnit.test('registers itself with video.js', function(assert) {
     'videojs-thumbnails plugin was registered'
   );
 
-  // this.player.thumbnails();
-  this.player.thumbnails(this.prepareTresholds(70));
-
+  this.player.thumbnails(this.prepareTresholds);
   // Tick the clock forward enough to trigger the player to be "ready".
   this.clock.tick(1);
-
-  // console.log(this.player.el().getElementsByClassName('vjs-thumbnail-time'))
+  this.player.trigger('loadedmetadata');
 
   assert.equal(
     1,
@@ -149,9 +117,9 @@ QUnit.test('Thumbnail behaviour when mouse hover', function(assert) {
     'videojs-thumbnails plugin was registered'
   );
 
-  this.player.thumbnails(this.prepareTresholds(70));
-
+  this.player.thumbnails(this.prepareTresholds);
   this.clock.tick(1);
+  this.player.trigger('loadedmetadata');
 
   const thumbnaislHolder = this.player.contentEl().
                            getElementsByClassName('vjs-thumbnail-holder')[0];

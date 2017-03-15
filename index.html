@@ -13,8 +13,6 @@
   </video>
   <ul>
     <li><a href="test/">Run unit tests in browser.</a></li>
-    
-    
   </ul>
   <script src="node_modules/video.js/dist/video.js"></script>
   <script src="dist/browser/videojs-thumbnails.js"></script>
@@ -22,48 +20,13 @@
     (function(window, videojs) {
       var player = window.player = videojs('videojs-thumbnails-player');
 
-      let prepareThumbnailsClips = (videoTime) => {
-          let currentTime = 0;
-          const stepTime = 2;
-          let currentIteration = 0;
-          const thumbnailWidth = 100;
-          let thumbnailOffset = 0;
-          const spriteURL = "http://twig-video-europe.s3.amazonaws.com/TWG00024/2012-11-30/thumbnail/sprite.jpg";
-          const thumbnailClips = {
-            0: {
-              src: spriteURL,
-              style: {
-                left: (thumbnailWidth / 2 * -1) + 'px',
-                width: ((Math.floor(videoTime / stepTime) + 1) * thumbnailWidth) + 'px',
-                height: '86px',
-                padding: '5px 0 23px 0',
-                background: 'rgba(255,255,255,0.7)',
-                clip: 'rect(0, 100px, 100px, 0)'
-              }
-            }
-          };
-
-          while (currentTime <= videoTime) {
-            currentTime += stepTime;
-            thumbnailOffset = ++currentIteration * thumbnailWidth;
-            thumbnailClips[currentTime] = {
-              style: {
-                left: ((thumbnailWidth / 2 + thumbnailOffset) * -1) + "px",
-                clip: "rect(0, " + (thumbnailWidth + thumbnailOffset) + "px, 100px, " + thumbnailOffset + "px)"
-              }
-            };
+      player.thumbnails(
+          {
+              width: 100,
+              spriteUrl: 'http://placehold.it/350x150',
+              stepTime: 2,
           }
-          return thumbnailClips;
-        };
-
-
-        if (player.readyState() < 1) {
-          player.on('loadedmetadata', (() => {
-            player.thumbnails(prepareThumbnailsClips(player.duration()));
-          }));
-        } else {
-          player.thumbnails(prepareThumbnailsClips(player.duration()));
-        }
+      );
 
     }(window, window.videojs));
   </script>
