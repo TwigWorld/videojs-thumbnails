@@ -1,7 +1,12 @@
 import {document, window} from 'global';
 
 export default class ThumbnailHelpers {
-  /* global player  */
+
+  static hidePlayerOnHoverTime(progressControl) {
+    const mouseTime = progressControl.el_.getElementsByClassName('vjs-mouse-display')[0];
+
+    mouseTime.style.display = 'none';
+  }
 
   static createThumbnails(...args) {
     const thumbnailClip = args.shift() || {};
@@ -63,7 +68,7 @@ export default class ThumbnailHelpers {
     };
   }
 
-  static suportAndroidEvents() {
+  static suportAndroidEvents(player) {
     // Android doesn't support :active and :hover on non-anchor and non-button elements
     // so, we need to fake the :active selector for thumbnails to show up.
     const progressControl = player.controlBar.progressControl;

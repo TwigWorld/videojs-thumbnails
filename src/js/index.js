@@ -69,6 +69,7 @@ const initializeThumbnails = (thumbnailsClips, player) => {
                                                              thumbnailImg,
                                                              timelineTime,
                                                              thumbnailArrowDown);
+  ThumbnailHelpers.hidePlayerOnHoverTime(progressControl);
 
   if (window.navigator.userAgent.toLowerCase().indexOf('android') !== -1) {
     ThumbnailHelpers.suportAndroidEvents();
